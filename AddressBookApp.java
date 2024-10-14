@@ -29,57 +29,66 @@ public class AddressBookApp {
 			switch (ch) {
 			case 1:
 
-				System.out.print("Enter First Name: ");
-				String firstName = sc.nextLine();
+				try {
+					System.out.print("Enter First Name: ");
+					String firstName = sc.nextLine();
 
-				System.out.print("Enter Last Name: ");
-				String lastName = sc.nextLine();
+					System.out.print("Enter Last Name: ");
+					String lastName = sc.nextLine();
 
-				System.out.print("Enter State: ");
-				String state = sc.nextLine();
+					System.out.print("Enter State: ");
+					String state = sc.nextLine();
 
-				System.out.print("Enter City: ");
-				String city = sc.nextLine();
+					System.out.print("Enter City: ");
+					String city = sc.nextLine();
 
-				System.out.print("Enter Pincode: ");
-				int pincode = sc.nextInt();
+					System.out.print("Enter Pincode: ");
+					int pincode = sc.nextInt();
 
-				System.out.print("Enter Salary: ");
-				double salary = sc.nextDouble();
+					System.out.print("Enter Salary: ");
+					double salary = sc.nextDouble();
 
-				Date date = new Date();
+					Date date = new Date();
 
-				Person per = new Person(firstName, lastName, state, city, pincode, salary, date);
+					Person per = new Person(firstName, lastName, state, city, pincode, salary, date);
 
-				ab.addPerson(per);
+					ab.addPerson(per);
 
-				break;
-
+					break;
+				} catch (Exception e) {
+					System.out.println("An unexpected error occurred: " + e.getMessage());
+				}
 			case 2:
+
 				ab.listOfPerson();
 
 				break;
 
 			case 3:
 
-				System.out.print("Enter the First Name of the Person to Update: ");
-				String updateFirstName = sc.nextLine();
+				try {
+					System.out.print("Enter the First Name of the Person to Update: ");
+					String updateFirstName = sc.nextLine();
 
-				System.out.print("Enter New City: ");
-				String newCity = sc.nextLine();
+					System.out.print("Enter New City: ");
+					String newCity = sc.nextLine();
 
-				System.out.print("Enter New State: ");
-				String newState = sc.nextLine();
+					System.out.print("Enter New State: ");
+					String newState = sc.nextLine();
 
-				System.out.print("Enter New Pincode: ");
-				int newPincode = sc.nextInt();
+					System.out.print("Enter New Pincode: ");
+					int newPincode = sc.nextInt();
 
-				System.out.print("Enter New Salary: ");
-				double newSalary = sc.nextDouble();
+					System.out.print("Enter New Salary: ");
+					double newSalary = sc.nextDouble();
 
-				ab.updatePerson(updateFirstName, newState, newCity, newPincode, newSalary);
+					ab.updatePerson(updateFirstName, newState, newCity, newPincode, newSalary);
 
-				break;
+					break;
+
+				} catch (Exception e) {
+					System.out.println("An unexpected error occurred: " + e.getMessage());
+				}
 			case 4:
 
 				System.out.print("Enter the First Name of the Person to Delete: ");

@@ -1,6 +1,7 @@
 package AddressBookApp;
 
 import java.util.Date;
+import java.util.regex.Pattern;
 
 public class Person {
 
@@ -12,8 +13,39 @@ public class Person {
 	private double salary;
 	private Date date;
 
-	public Person(String firstName, String lastName, String state, String city, int pincode, double salary, Date date) {
+	private static final Pattern NAME_PATTERN = Pattern.compile("^[A-Za-z]+$");
+	private static final Pattern PINCODE_PATTERN = Pattern.compile("^[1-9][0-9]{5}$");
+	private static final Pattern STATE_CITY_PATTERN = Pattern.compile("^[A-Za-z\\s]+$");
+
+	public Person(String firstName, String lastName, String state, String city, int pincode, double salary, Date date)
+			throws CustomValidationException {
 		super();
+
+		if (!NAME_PATTERN.matcher(firstName).matches()) {
+			throw new CustomValidationException("Invalid first name. Only alphabets are allowed.");
+		}
+		
+		if (!NAME_PATTERN.matcher(lastName).matches()) {
+			throw new CustomValidationException("Invalid last name. Only alphabets are allowed.");
+		}
+		
+		if (!STATE_CITY_PATTERN.matcher(state).matches()) {
+			throw new CustomValidationException("Invalid state name. Only alphabets and spaces are allowed.");
+		}
+		
+		if (!STATE_CITY_PATTERN.matcher(city).matches()) {
+			throw new CustomValidationException("Invalid city name. Only alphabets and spaces are allowed.");
+		}
+		
+		if (!PINCODE_PATTERN.matcher(String.valueOf(pincode)).matches()) {
+			throw new CustomValidationException(
+					"Invalid pincode. It should be a 6-digit number starting with a non-zero.");
+		}
+		
+		if (salary < 0) {
+			throw new CustomValidationException("Salary cannot be negative.");
+		}
+
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.state = state;
