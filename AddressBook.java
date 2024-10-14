@@ -10,6 +10,8 @@ public class AddressBook {
 	public void addPerson(Person person) {
 
 		listPerson.add(person);
+
+
 		System.out.println("Person Added SuccessFully \n");
 	}
 
@@ -73,5 +75,10 @@ public class AddressBook {
 		}
 
 	}
+
+public void getByName(){
+
+System.out.println("Hello BridgeLabz");
+}
 
 }
